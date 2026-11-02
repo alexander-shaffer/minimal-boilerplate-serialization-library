@@ -528,7 +528,6 @@ public:
 namespace {
 template<class Item = void, class... Items>
 struct vendor {
-private:
   template<class Package>
   [[nodiscard]] static consteval auto get_serializer_linked_to() {
     if constexpr (std::derived_from<Item, std::type_identity<std::remove_const_t<Package>>>) {
@@ -543,7 +542,6 @@ private:
   template<class Package>
   static constexpr bool PACKAGE_EXISTS{!std::is_void_v<decltype(get_serializer_linked_to<Package>())>};
 
-public:
   template<class Package>
   requires PACKAGE_EXISTS<Package>
   using get_serializer = decltype(get_serializer_linked_to<Package>());

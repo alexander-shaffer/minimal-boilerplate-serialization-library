@@ -22,9 +22,16 @@ group example_group
 // Assigns the endianness of all packages that follow. Valid values are little, big, and native. The default is little.
 endianness big
 
-// Defines a C++ struct in the mbsl::example_group namespace with automatically generated serialization and deserialization functions.
-package example_package {
+// Defines a C++ struct in the mbsl::example_group namespace that can be serialized and deserialized.
+package simple_package {
   double x_
   int y_
   std::array<std::uint8_t, 15> z_
+}
+
+package complex_package {
+  std::vector<int> w_
+  std::vector<std::byte> x_
+  float y_
+  std::array<char, 3> z_
 }
